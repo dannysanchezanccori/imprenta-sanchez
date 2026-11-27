@@ -250,7 +250,7 @@
             </form>
             <div class="info-card single">
               <h3>Buenas prácticas</h3>
-              <p>La contraseña se guarda cifrada con PBKDF2 y sal aleatoria. El acceso usa tokens de sesión con expiración de 8 horas. Si olvidas la contraseña, puedes restaurarla editando <code>backend/data.json</code> (pide ayuda para generar el hash).</p>
+              <p>En la web publicada la sesión la gestiona Supabase Auth y se renueva automáticamente mientras la pestaña siga abierta; si cierras la pestaña o pasa mucho tiempo, vuelve a iniciar sesión con tu correo. En el modo local la contraseña se guarda cifrada con PBKDF2 y la sesión dura 8 horas; si la olvidas, pide ayuda para regenerar el hash en <code>backend/data.json</code>.</p>
             </div>
           </section>
         </div>

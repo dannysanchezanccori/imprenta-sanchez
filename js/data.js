@@ -1,0 +1,121 @@
+/* Archivo generado automáticamente por el backend. No editar a mano. */
+/* Se actualiza cada vez que guardas cambios en el panel de administración. */
+window.SITE_DATA_DEFAULT = {
+  "settings": {
+    "brand": "Imprenta Sanchez",
+    "slogan": "Tu idea, impresa con excelencia.",
+    "whatsapp": "984508211",
+    "email": "",
+    "address": "Tres Cruces de Oro 486 – Centro Comercial La Frontera, Int. 104",
+    "hours": "Lunes a viernes, 9:00 a.m. – 7:00 p.m. · Sábados, 9:00 a.m. – 1:00 p.m.",
+    "facebook": "",
+    "instagram": "",
+    "tiktok": ""
+  },
+  "services": [
+    {
+      "id": "srv-digital",
+      "title": "Impresión digital",
+      "description": "Pedidos rápidos, colores nítidos y acabados profesionales para cantidades pequeñas y medianas.",
+      "icon": "digital",
+      "image": "img/volante_2.jpeg"
+    },
+    {
+      "id": "srv-offset",
+      "title": "Impresión offset",
+      "description": "Máxima calidad y rendimiento para tirajes grandes con tonos consistentes en cada hoja.",
+      "icon": "offset",
+      "image": ""
+    },
+    {
+      "id": "srv-tarjetas",
+      "title": "Tarjetas de presentación",
+      "description": "Diseños con laminado, mate o brillo que dejan una impresión duradera.",
+      "icon": "tarjeta",
+      "image": "img/tajetas_servicios.png"
+    },
+    {
+      "id": "srv-volantes",
+      "title": "Volantes y flyers",
+      "description": "Difunde tus promociones con piezas livianas, coloridas y listas para repartir.",
+      "icon": "volante",
+      "image": "img/volante_servicios.png"
+    },
+    {
+      "id": "srv-banners",
+      "title": "Banners y afiches",
+      "description": "Formatos grandes para ferias, locales y campañas que se ven desde lejos.",
+      "icon": "banner",
+      "image": ""
+    },
+    {
+      "id": "srv-sellos",
+      "title": "Sellos y etiquetas",
+      "description": "Identidad, empaque y presentación con sellos personalizados y etiquetas adhesivas.",
+      "icon": "sello",
+      "image": ""
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-tarjetas",
+      "name": "Tarjetas de presentación",
+      "description": "Couché 300 g con laminado mate o brillo. El detalle que eleva tu marca.",
+      "image": "img/tajetas_servicios.png",
+      "badge": "Más vendido"
+    },
+    {
+      "id": "prod-volantes",
+      "name": "Volantes promocionales",
+      "description": "A todo color, papel bond o couché, en los tamaños que tu campaña necesita.",
+      "image": "img/volante_servicios.png",
+      "badge": "A todo color"
+    },
+    {
+      "id": "prod-banner",
+      "name": "Banners de gran formato",
+      "description": "Lonas y lonas frontón resistentes para interior y exterior.",
+      "image": "img/producto-banner.svg",
+      "badge": "Gran formato"
+    },
+    {
+      "id": "prod-sello",
+      "name": "Sellos personalizados",
+      "description": "Sellos de madera o automáticos con tu logo, nombre o mensaje.",
+      "image": "img/producto-sello.svg",
+      "badge": "Personalizado"
+    },
+    {
+      "id": "prod-etiquetas",
+      "name": "Etiquetas adhesivas",
+      "description": "Rollos o láminas troqueladas para empaques, productos y eventos.",
+      "image": "img/producto-etiquetas.svg",
+      "badge": "Nuevo"
+    },
+    {
+      "id": "prod-afiche",
+      "name": "Afiches y pósters",
+      "description": "Alta definición y acabados que hacen destacar cada aviso.",
+      "image": "img/producto-afiche.svg",
+      "badge": "Alta definición"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "demo-1",
+      "name": "María R.",
+      "rating": 5,
+      "text": "El acabado de las tarjetas quedó increíble y el tiempo de entrega fue muy puntual. Volveremos a pedir.",
+      "status": "approved",
+      "date": "2026-09-12T10:00:00.000Z"
+    },
+    {
+      "id": "demo-2",
+      "name": "Carlos M.",
+      "rating": 5,
+      "text": "Buena atención, colores muy fieles al diseño y precios justos. Recomiendo la imprenta.",
+      "status": "approved",
+      "date": "2026-10-03T15:30:00.000Z"
+    }
+  ]
+};

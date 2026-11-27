@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Sellos personalizados">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F5F8FF"/><stop offset="1" stop-color="#FFF6DC"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="400" cy="330" r="215" fill="#F7BB01" opacity=".15"/>
+  <g transform="rotate(-12 400 300)">
+    <rect x="362" y="95" width="76" height="185" rx="34" fill="#003D8E"/>
+    <rect x="352" y="250" width="96" height="42" rx="14" fill="#01276E"/>
+    <rect x="270" y="280" width="260" height="70" rx="24" fill="#344054"/>
+    <rect x="285" y="335" width="230" height="120" rx="18" fill="#101828"/>
+    <rect x="305" y="405" width="190" height="28" rx="14" fill="#F7BB01"/>
+  </g>
+  <g transform="translate(500 380) rotate(9)">
+    <circle r="72" fill="none" stroke="#003D8E" stroke-width="10"/>
+    <circle r="50" fill="none" stroke="#003D8E" stroke-width="4" opacity=".6"/>
+    <path d="M-22 6 L-6 22 L26 -16" fill="none" stroke="#003D8E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

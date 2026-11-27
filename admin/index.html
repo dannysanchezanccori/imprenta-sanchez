@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" id="adminThemeColor" content="#003D8E">
+  <title>Panel de administración — Imprenta Sanchez</title>
+  <link rel="icon" id="adminFavicon" href="../img/logo_paraclaro.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="../js/cloud-config.js"></script>
+  <script src="../js/cloud.js"></script>
+  <script src="../js/admin.js" defer></script>
+</head>
+<body>
+  <div class="admin-shell" id="adminShell">
+    <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+    <!-- ============================ SIDEBAR ============================ -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Cerrar menú" title="Cerrar menú">×</button>
+      <div class="sidebar-brand">
+        <img data-admin-logo src="../img/logo_paraclaro.png" alt="" width="42" height="42">
+        <span><strong>Imprenta Sanchez</strong><small>Panel de administración</small></span>
+      </div>
+      <nav class="side-nav" aria-label="Secciones del panel">
+        <button type="button" class="side-link active" data-tab="resumen"><span>◫</span> Resumen</button>
+        <button type="button" class="side-link" data-tab="negocio"><span>◈</span> Datos del negocio</button>
+        <button type="button" class="side-link" data-tab="servicios"><span>✦</span> Servicios</button>
+        <button type="button" class="side-link" data-tab="productos"><span>▤</span> Productos</button>
+        <button type="button" class="side-link" data-tab="resenas"><span>★</span> Reseñas <span class="side-badge" id="pendingReviewsBadge" title="Reseñas pendientes de aprobación">0</span></button>
+        <button type="button" class="side-link" data-tab="seguridad"><span>⚿</span> Seguridad</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="side-link" href="../index.html" target="_blank" rel="noopener noreferrer"><span>↗</span> Ver sitio público</a>
+        <button type="button" class="side-link" id="logoutBtn"><span>⇥</span> Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <!-- ============================= CONTENIDO ============================ -->
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <button class="side-toggle" id="sideToggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        <div class="topbar-title">
+          <h1 id="pageTitle">Resumen</h1>
+          <p id="pageSubtitle">Una vista rápida de tu imprenta</p>
+        </div>
+        <button class="theme-toggle-admin" id="adminThemeToggle" type="button" aria-label="Activar modo oscuro" title="Activar modo oscuro" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <div class="topbar-user" id="adminUserBadge" hidden>Administrador</div>
+      </header>
+
+      <div class="admin-content">
+        <div class="alert error" id="offlineBanner" hidden>
+          <strong>No se pudo conectar con el servidor.</strong>
+          <span>Para usar el panel, ejecuta el archivo <code>INICIAR.bat</code> desde la carpeta del proyecto y abre <code>http://localhost:3000/admin</code>. El sitio público sí funciona abriendo <code>index.html</code> directamente.</span>
+        </div>
+
+        <!-- ---------------------------- LOGIN ---------------------------- -->
+        <section class="login-view" id="loginView">
+          <div class="login-card">
+            <div class="login-brand">
+              <img src="../img/logo_paraoscuro.png" alt="" width="56" height="56">
+              <h2>Bienvenido de nuevo</h2>
+              <p>Accede al centro de administración de Imprenta Sanchez.</p>
+              <ul>
+                <li>✓ Actualiza contacto y ubicación</li>
+                <li>✓ Gestiona servicios y catálogo</li>
+                <li>✓ Aprueba las reseñas recibidas</li>
+              </ul>
+            </div>
+            <form class="login-form" id="loginForm" novalidate>
+              <h3>Iniciar sesión</h3>
+              <label for="loginUser">Usuario</label>
+              <input id="loginUser" name="username" type="text" autocomplete="username" placeholder="admin" required>
+              <label for="loginPass">Contraseña</label>
+              <input id="loginPass" name="password" type="password" autocomplete="current-password" placeholder="Tu contraseña" required>
+              <p class="form-error" id="loginError" role="alert" hidden></p>
+              <button class="btn primary block" type="submit">Entrar al panel</button>
+              <p class="login-hint">Acceso inicial: <code>admin</code> / <code>Imprenta2026!</code><br>Cámbialo en la sección Seguridad.</p>
+            </form>
+          </div>
+        </section>
+
+        <!-- --------------------------- DASHBOARD -------------------------- -->
+        <div id="dashboardView" hidden>
+          <div class="admin-welcome" id="adminWelcome" hidden>
+            <span class="welcome-icon" aria-hidden="true">👋</span>
+            <div>
+              <strong id="welcomeTitle">¡Bienvenido!</strong>
+              <p id="welcomeText">Tu panel está listo para actualizar la imprenta.</p>
+            </div>
+            <span class="welcome-date" id="welcomeDate"></span>
+          </div>
+
+          <!-- Resumen -->
+          <section class="panel" data-panel="resumen">
+            <div class="panel-head">
+              <div><h2>Resumen general</h2><p>Todo lo que necesitas revisar de un vistazo.</p></div>
+              <button class="btn primary" type="button" data-go="negocio">Editar datos del negocio</button>
+            </div>
+            <div class="stat-grid">
+              <article class="stat-card"><span class="stat-icon yellow">✦</span><div><strong id="statServices">0</strong><span>Servicios activos</span></div></article>
+              <article class="stat-card"><span class="stat-icon blue">▤</span><div><strong id="statProducts">0</strong><span>Productos publicados</span></div></article>
+              <article class="stat-card"><span class="stat-icon orange">◷</span><div><strong id="statPending">0</strong><span>Reseñas pendientes</span></div></article>
+              <article class="stat-card"><span class="stat-icon green">★</span><div><strong id="statApproved">0</strong><span>Reseñas publicadas</span></div></article>
+            </div>
+            <div class="panel two-cols">
+              <div class="info-card">
+                <h3>Cambios en tiempo real</h3>
+                <p>Cada vez que guardes, se actualizan el sitio público, el botón de WhatsApp, el chatbot, el formulario de pedidos y el mapa.</p>
+                <a class="btn ghost" href="../index.html" target="_blank" rel="noopener noreferrer">Abrir sitio público ↗</a>
+              </div>
+              <div class="info-card">
+                <h3>Accesos rápidos</h3>
+                <div class="quick-actions">
+                  <button class="btn ghost" type="button" data-go="productos">+ Nuevo producto</button>
+                  <button class="btn ghost" type="button" data-go="servicios">+ Nuevo servicio</button>
+                  <button class="btn ghost" type="button" data-go="resenas">Revisar reseñas</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Datos del negocio -->
+          <section class="panel" data-panel="negocio" hidden>
+            <div class="panel-head">
+              <div><h2>Datos del negocio</h2><p>Estos valores aparecen en toda la web pública.</p></div>
+            </div>
+            <form class="card-form" id="businessForm" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="setBrand">Nombre de la imprenta</label>
+                  <input id="setBrand" type="text" maxlength="160">
+                </div>
+                <div class="field">
+                  <label for="setWhatsapp">WhatsApp (solo números)</label>
+                  <input id="setWhatsapp" type="text" inputmode="numeric" maxlength="20" placeholder="984508211">
+                  <small>Se usa para wa.me, el botón flotante, el chatbot y los pedidos.</small>
+                </div>
+                <div class="field full">
+                  <label for="setSlogan">Slogan</label>
+                  <input id="setSlogan" type="text" maxlength="160" placeholder="Tu idea, impresa con excelencia.">
+                </div>
+                <div class="field full">
+                  <label for="setAddress">Dirección / ubicación del local</label>
+                  <input id="setAddress" type="text" maxlength="300">
+                  <small>Al guardar, el mapa de Google se actualiza automáticamente.</small>
+                </div>
+                <div class="field">
+                  <label for="setEmail">Correo electrónico</label>
+                  <input id="setEmail" type="email" maxlength="160" placeholder="contacto@correo.com">
+                  <small>Déjalo vacío si aún no tienes correo.</small>
+                </div>
+                <div class="field">
+                  <label for="setHours">Horarios de atención</label>
+                  <input id="setHours" type="text" maxlength="160">
+                  <small>El chatbot usa este texto para responder.</small>
+                </div>
+                <div class="field">
+                  <label for="setFacebook">Facebook (URL)</label>
+                  <input id="setFacebook" type="text" maxlength="160" placeholder="https://facebook.com/...">
+                </div>
+                <div class="field">
+                  <label for="setInstagram">Instagram (URL)</label>
+                  <input id="setInstagram" type="text" maxlength="160" placeholder="https://instagram.com/...">
+                </div>
+                <div class="field">
+                  <label for="setTiktok">TikTok (URL)</label>
+                  <input id="setTiktok" type="text" maxlength="160" placeholder="https://tiktok.com/...">
+                </div>
+              </div>
+              <div class="form-actions"><button class="btn primary" type="submit">Guardar cambios</button></div>
+            </form>
+          </section>
+
+          <!-- Servicios -->
+          <section class="panel" data-panel="servicios" hidden>
+            <div class="panel-head"><div><h2>Servicios</h2><p>Agrega, edita o elimina los servicios. Puedes subir una foto para mostrarla en la tarjeta.</p></div></div>
+            <form class="card-form compact" id="serviceForm" novalidate>
+              <input type="hidden" id="serviceId">
+              <div class="form-grid">
+                <div class="field"><label for="serviceTitle">Título</label><input id="serviceTitle" type="text" maxlength="100" placeholder="Ej. Impresión digital" required></div>
+                <div class="field"><label for="serviceIcon">Icono</label>
+                  <select id="serviceIcon">
+                    <option value="digital">Digital</option><option value="offset">Offset</option>
+                    <option value="tarjeta">Tarjeta</option><option value="volante">Volante</option>
+                    <option value="banner">Banner</option><option value="sello">Sello</option>
+                    <option value="etiqueta">Etiqueta</option><option value="afiche">Afiche</option>
+                    <option value="laminado">Laminado</option><option value="default">Genérico</option>
+                  </select>
+                </div>
+                <div class="field full"><label for="serviceDescription">Descripción</label><textarea id="serviceDescription" rows="2" maxlength="400" placeholder="Describe brevemente el servicio..."></textarea></div>
+                <div class="field"><label for="serviceImage">URL de la imagen (opcional)</label><input id="serviceImage" type="text" maxlength="600" placeholder="img/tajetas_servicios.png"></div>
+                <div class="field"><label for="serviceFile">O subir foto del servicio</label><input id="serviceFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif"></div>
+              </div>
+              <div class="form-actions">
+                <button class="btn primary" id="serviceSubmit" type="submit">Agregar servicio</button>
+                <button class="btn ghost" id="serviceCancel" type="button" hidden>Cancelar edición</button>
+              </div>
+            </form>
+            <div class="list" id="serviceList"></div>
+          </section>
+
+          <!-- Productos -->
+          <section class="panel" data-panel="productos" hidden>
+            <div class="panel-head"><div><h2>Productos</h2><p>Gestiona el catálogo del sitio. Puedes subir una imagen o pegar una URL.</p></div></div>
+            <form class="card-form compact" id="productForm" novalidate>
+              <input type="hidden" id="productId">
+              <div class="form-grid">
+                <div class="field"><label for="productName">Nombre</label><input id="productName" type="text" maxlength="120" placeholder="Ej. Tarjetas de presentación" required></div>
+                <div class="field"><label for="productBadge">Etiqueta (opcional)</label><input id="productBadge" type="text" maxlength="60" placeholder="Ej. Más vendido"></div>
+                <div class="field full"><label for="productDescription">Descripción</label><textarea id="productDescription" rows="2" maxlength="500" placeholder="Describe el producto..."></textarea></div>
+                <div class="field"><label for="productImage">URL de la imagen</label><input id="productImage" type="text" maxlength="600" placeholder="img/producto-tarjetas.svg"></div>
+                <div class="field"><label for="productFile">O subir imagen desde tu PC</label><input id="productFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif"></div>
+              </div>
+              <div class="form-actions">
+                <button class="btn primary" id="productSubmit" type="submit">Agregar producto</button>
+                <button class="btn ghost" id="productCancel" type="button" hidden>Cancelar edición</button>
+              </div>
+            </form>
+            <div class="product-grid" id="productList"></div>
+          </section>
+
+          <!-- Reseñas -->
+          <section class="panel" data-panel="resenas" hidden>
+            <div class="panel-head"><div><h2>Reseñas</h2><p>Las reseñas nuevas llegan como pendientes y NO se publican hasta que las apruebes.</p></div></div>
+            <div class="filter-row" id="reviewFilters">
+              <button type="button" class="filter active" data-filter="pending">Pendientes</button>
+              <button type="button" class="filter" data-filter="approved">Publicadas</button>
+              <button type="button" class="filter" data-filter="rejected">Rechazadas</button>
+              <button type="button" class="filter" data-filter="all">Todas</button>
+            </div>
+            <div class="list" id="reviewList"></div>
+          </section>
+
+          <!-- Seguridad -->
+          <section class="panel" data-panel="seguridad" hidden>
+            <div class="panel-head"><div><h2>Seguridad</h2><p>Actualiza tu contraseña de acceso al panel.</p></div></div>
+            <form class="card-form" id="passwordForm" novalidate>
+              <div class="form-grid">
+                <div class="field"><label for="currentPassword">Contraseña actual</label><input id="currentPassword" type="password" autocomplete="current-password" required></div>
+                <div class="field"><label for="newPassword">Nueva contraseña</label><input id="newPassword" type="password" autocomplete="new-password" minlength="8" required><small>Mínimo 8 caracteres.</small></div>
+                <div class="field"><label for="confirmPassword">Confirmar nueva contraseña</label><input id="confirmPassword" type="password" autocomplete="new-password" minlength="8" required></div>
+              </div>
+              <div class="form-actions"><button class="btn primary" type="submit">Cambiar contraseña</button></div>
+            </form>
+            <div class="info-card single">
+              <h3>Buenas prácticas</h3>
+              <p>La contraseña se guarda cifrada con PBKDF2 y sal aleatoria. El acceso usa tokens de sesión con expiración de 8 horas. Si olvidas la contraseña, puedes restaurarla editando <code>backend/data.json</code> (pide ayuda para generar el hash).</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-root" id="adminToast" aria-live="polite"></div>
+</body>
+</html>

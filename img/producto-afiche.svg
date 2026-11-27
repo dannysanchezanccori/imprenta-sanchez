@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Afiches y pósters">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#EAF1FA"/><stop offset="1" stop-color="#FFF8E3"/></linearGradient>
+    <linearGradient id="art" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7BB01"/><stop offset="1" stop-color="#E08A00"/></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g transform="rotate(4 400 300)">
+    <rect x="245" y="80" width="330" height="460" rx="10" fill="#101828" opacity=".14"/>
+    <rect x="225" y="60" width="330" height="460" rx="10" fill="#fff"/>
+    <rect x="225" y="60" width="330" height="285" rx="10" fill="#003D8E"/>
+    <circle cx="390" cy="200" r="96" fill="url(#art)"/>
+    <path d="M225 300 Q310 220 390 300 T555 295 V345 H225Z" fill="#fff" opacity=".16"/>
+    <rect x="255" y="385" width="230" height="22" rx="11" fill="#101828" opacity=".85"/>
+    <rect x="255" y="423" width="265" height="12" rx="6" fill="#98A2B3"/>
+    <rect x="255" y="447" width="200" height="12" rx="6" fill="#98A2B3" opacity=".65"/>
+    <rect x="255" y="482" width="90" height="20" rx="10" fill="#F7BB01"/>
+  </g>
+</svg>
